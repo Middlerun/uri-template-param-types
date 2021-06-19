@@ -1,0 +1,15 @@
+{
+  "name": "rfc6570-param-types",
+  "version": "0.1.0",
+  "types": "index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "test": "yarn tsd"
+  },
+  "devDependencies": {
+    "tsd": "^0.17.0"
+  },
+  "peerDependencies": {
+    "typescript": ">=4.1.0"
+  }
+}
