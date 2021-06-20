@@ -1,6 +1,6 @@
 # uri-template-param-types
 
-This module defines a TypeScript type `URIParams` which represents the parameters of a URI template defined according to [RFC6570](https://datatracker.ietf.org/doc/html/rfc6570).
+This package defines a TypeScript type `URIParams` which represents the parameters of a URI template defined according to [RFC6570](https://datatracker.ietf.org/doc/html/rfc6570).
 
 Requires TypeScript 4.1 or higher.
 

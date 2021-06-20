@@ -1,6 +1,11 @@
 {
   "name": "uri-template-param-types",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Middlerun/uri-template-param-types.git"
+  },
+  "homepage": "https://github.com/Middlerun/uri-template-param-types",
   "types": "index.d.ts",
   "license": "MIT",
   "scripts": {
