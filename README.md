@@ -4,6 +4,19 @@ This package defines a TypeScript type `URIParams` which represents the paramete
 
 Requires TypeScript 4.1 or higher.
 
+## Example
+
+```typescript
+type APIParameters = URIParams<'/api/my-route/{/path*}{?foo}'>
+
+// Equivalent to:
+
+type APIParameters = {
+  path?: Array<string | number> | { [key: string]: string | number },
+  foo?: string | number | Array<string | number> | { [key: string]: string | number },
+}
+```
+
 ## Usage example
 
 Using `URIParams` while working with the [url-template](https://www.npmjs.com/package/url-template) library.

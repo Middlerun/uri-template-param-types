@@ -1,5 +1,5 @@
-import { expectType } from 'tsd'
-import { ParamValue, URIParams } from './index'
+import { expectType, expectNotType } from 'tsd'
+import { ParamValue, CompositeParamValue, URIParams } from './index'
 
 export type CompositeValue = ParamValue | Array<ParamValue> | { [key: string]: ParamValue };
 
@@ -38,9 +38,14 @@ export type CompositeValue = ParamValue | Array<ParamValue> | { [key: string]: P
   type TestParameters = URIParams<'/api/my-route/{/path*}{?foo:8}'>
 
   type ExpectedType = {
-    path?: ParamValue,
+    path?: CompositeParamValue,
     foo?: ParamValue,
   }
 
   expectType<TestParameters>('dummyvalue' as ExpectedType)
+
+  // A CompositeParamValue must be either an array or an object
+  expectNotType<TestParameters>({
+    path: 'simpleValue',
+  })
 }

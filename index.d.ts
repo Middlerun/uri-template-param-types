@@ -1,13 +1,19 @@
 type SingleParamValue = string | number
+
 type ParamValue = SingleParamValue | Array<SingleParamValue> | { [key: string]: SingleParamValue }
+type CompositeParamValue = Array<SingleParamValue> | { [key: string]: SingleParamValue }
+
 type ParamObject<Param extends string> = {
   [param in Param]?: ParamValue;
+}
+type CompositeParamObject<Param extends string> = {
+  [param in Param]?: CompositeParamValue;
 }
 
 type ExtractParam<RawParam extends string> =
   // Use modifiers to distinguish between simple and composite parameters
   RawParam extends `${infer Param}:${infer Chars}` ? ParamObject<Param> :
-  RawParam extends `${infer Param}*` ? ParamObject<Param> :
+  RawParam extends `${infer Param}*` ? CompositeParamObject<Param> :
   ParamObject<RawParam>
 
 type CommaSeparatedParams<Params extends string> =
@@ -40,4 +46,4 @@ type URIParams<Template extends string> =
     { [param in keyof UriParamsIntersection<Template>]: UriParamsIntersection<Template>[param] } :
     { [key: string]: any }
 
-export { URIParams, ParamValue }
+export { URIParams, ParamValue, CompositeParamValue }
