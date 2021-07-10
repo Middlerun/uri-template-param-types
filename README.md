@@ -37,6 +37,22 @@ const params: URIParams<typeof template> = {
 const uri = urlTemplate.parse(template).expand(params)
 ```
 
+## Permissive version
+
+By default, the basic type for a single value is `string | number`, as described by the RFC6570 standard. However some implementations also handle boolean and null values. For these cases there is an alternative type, `PermissiveURIParams`.
+
+Example:
+
+```typescript
+type APIParameters = PermissiveURIParams<'/api/my-route{?foo}'>
+
+// Equivalent to:
+
+type APIParameters = {
+  foo?: string | number | boolean | null | Array<string | number | boolean | null> | { [key: string]: string | number | boolean | null },
+}
+```
+
 ## License
 
 Copyright 2021 Eddie McLean
